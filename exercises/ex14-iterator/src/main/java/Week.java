@@ -19,7 +19,7 @@ import java.util.Iterator;
 public class Week implements Iterable<String> {
 
   private final String[] days = {
-    "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
+          "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
   };
 
   /**
@@ -41,14 +41,35 @@ public class Week implements Iterable<String> {
     //         - next() returns the next day and advances, or throws
     //           java.util.NoSuchElementException if none remain.
     //       Replace the empty iterator below with an instance of your class.
-    return Collections.emptyIterator();
+
+    return new WeekIterator();
   }
 
-  /** Prints each day of the week, one per line. */
-  public static void main(String[] args) {
-    Week week = new Week();
-    for (String day : week) {
-      System.out.println(day);
+  private class WeekIterator implements Iterator<String> {
+    private int index = 0;
+
+    @Override
+    public boolean hasNext() {
+      return index < days.length;
+    }
+
+    @Override
+    public String next() {
+      if (!hasNext()) {
+        throw new java.util.NoSuchElementException();
+      }
+
+      return days[index++];
+    }
+
+    /**
+     * Prints each day of the week, one per line.
+     */
+    public static void main(String[] args) {
+      Week week = new Week();
+      for (String day : week) {
+        System.out.println(day);
+      }
     }
   }
 }
