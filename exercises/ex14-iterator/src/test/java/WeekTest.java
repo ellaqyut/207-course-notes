@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /** Tests for {@link Week}. Do NOT modify this file. */
-class WeekTest {
+class     WeekTest {
 
   @Test
   void forEachVisitsAllSevenDays() {
